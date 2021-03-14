@@ -29,4 +29,20 @@ public class CustomBST<K extends Comparable<K>> {
             return 0;
         return 1 + size(current.getLeft()) + size(current.getRight());
     }
+
+    public boolean search(K key){
+        return search(root, key);
+    }
+
+    private boolean search(BSTNode<K> current, K key){
+        if(current == null)
+            return false;
+        int compare = key.compareTo(current.getKey());
+        if(compare == 0)
+            return true;
+        else if(compare < 0)
+            return search(current.getLeft(), key);
+        else
+            return search(current.getRight(),key);
+    }
 }
